@@ -56,7 +56,7 @@ class Login extends CI_Controller
                 }
             }
         } else {
-            $this->load->view('admin/view_login',$data);    
+                 $this->load->view('admin/view_login',$data);    
         }
         
     }

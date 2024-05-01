@@ -511,3 +511,8 @@ ERROR - 2024-04-29 07:31:20 --> 404 Page Not Found: admin/Assets/css
 ERROR - 2024-04-29 07:31:20 --> 404 Page Not Found: admin/Assets/css
 ERROR - 2024-04-29 07:31:20 --> 404 Page Not Found: admin/Assets/css
 ERROR - 2024-04-29 07:31:21 --> 404 Page Not Found: admin/Assets/css
+ERROR - 2024-04-29 07:38:39 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-04-29 07:38:46 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-04-29 07:38:46 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-04-29 07:38:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-04-29 07:39:22 --> 404 Page Not Found: Public/uploads
