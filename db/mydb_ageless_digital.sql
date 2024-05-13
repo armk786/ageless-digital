@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2024 at 11:36 AM
+-- Generation Time: May 13, 2024 at 10:57 AM
 -- Server version: 10.4.28-MariaDB
--- PHP Version: 8.1.17
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,8 +18,37 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_inspace`
+-- Database: `mydb_ageless_digital`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_client`
+--
+
+CREATE TABLE `tbl_client` (
+  `id` int(11) NOT NULL,
+  `client_id` varchar(255) NOT NULL,
+  `client_name` varchar(255) NOT NULL,
+  `client_email` varchar(255) NOT NULL,
+  `client_number` varchar(255) NOT NULL,
+  `client_contact_name` varchar(255) NOT NULL,
+  `client_contact_no` varchar(255) NOT NULL,
+  `client_description` text NOT NULL,
+  `client_image` text NOT NULL,
+  `client_location` varchar(255) NOT NULL,
+  `client_category` varchar(255) NOT NULL,
+  `visible_to_employee` varchar(255) NOT NULL,
+  `visible_to_team` varchar(255) NOT NULL,
+  `client_city` varchar(255) NOT NULL,
+  `client_pincode` varchar(255) NOT NULL,
+  `client_address` text NOT NULL,
+  `client_latitude` varchar(255) NOT NULL,
+  `client_longitude` varchar(255) NOT NULL,
+  `joining_date` date NOT NULL,
+  `created_by` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -60,6 +89,25 @@ INSERT INTO `tbl_designation` (`designation_id`, `designation_name`) VALUES
 (2, 'Manager'),
 (3, 'Engineer'),
 (4, 'Worker');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_employee`
+--
+
+CREATE TABLE `tbl_employee` (
+  `id` int(11) NOT NULL,
+  `emp_id` varchar(255) NOT NULL,
+  `emp_first_name` varchar(255) NOT NULL,
+  `emp_last_name` varchar(255) NOT NULL,
+  `emp_email` varchar(255) NOT NULL,
+  `emp_mobile` varchar(255) NOT NULL,
+  `reporting_manager` varchar(255) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `joining_date` date NOT NULL,
+  `emp_image` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -469,6 +517,28 @@ INSERT INTO `tbl_portfolio_photo` (`id`, `portfolio_id`, `photo`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_role`
+--
+
+CREATE TABLE `tbl_role` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `created` date NOT NULL,
+  `updated` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_role`
+--
+
+INSERT INTO `tbl_role` (`id`, `name`, `description`, `created`, `updated`) VALUES
+(1, 'Admin', '', '2024-04-30', '2024-04-30'),
+(2, 'Manager', '', '2024-04-30', '2024-04-30');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_service`
 --
 
@@ -654,6 +724,18 @@ INSERT INTO `tbl_social` (`social_id`, `social_name`, `social_url`, `social_icon
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_team`
+--
+
+CREATE TABLE `tbl_team` (
+  `id` int(11) NOT NULL,
+  `team_name` varchar(255) NOT NULL,
+  `created` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_team_member`
 --
 
@@ -738,7 +820,7 @@ CREATE TABLE `tbl_user` (
   `phone` text NOT NULL,
   `password` text NOT NULL,
   `photo` text NOT NULL,
-  `role` text NOT NULL,
+  `role` int(11) NOT NULL,
   `status` text NOT NULL,
   `token` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -748,7 +830,7 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`id`, `full_name`, `email`, `phone`, `password`, `photo`, `role`, `status`, `token`) VALUES
-(1, 'Moneda', 'admin@gmail.com', '111-222-3333', '81dc9bdb52d04dc20036dbd8313ed055', 'user-1.png', 'Admin', 'Active', '6efb2bd15e40687ec2afedec43dffdd1');
+(1, 'Ageless Digital', 'admin@gmail.com', '111-222-3333', '81dc9bdb52d04dc20036dbd8313ed055', 'user-1.jpg', 1, 'Active', '6efb2bd15e40687ec2afedec43dffdd1');
 
 -- --------------------------------------------------------
 
@@ -797,6 +879,12 @@ INSERT INTO `tbl_why_choose_photo` (`id`, `main_photo`, `item_bg`) VALUES
 --
 
 --
+-- Indexes for table `tbl_client`
+--
+ALTER TABLE `tbl_client`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_comment`
 --
 ALTER TABLE `tbl_comment`
@@ -807,6 +895,12 @@ ALTER TABLE `tbl_comment`
 --
 ALTER TABLE `tbl_designation`
   ADD PRIMARY KEY (`designation_id`);
+
+--
+-- Indexes for table `tbl_employee`
+--
+ALTER TABLE `tbl_employee`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_faq`
@@ -881,6 +975,12 @@ ALTER TABLE `tbl_portfolio_photo`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_role`
+--
+ALTER TABLE `tbl_role`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_service`
 --
 ALTER TABLE `tbl_service`
@@ -903,6 +1003,12 @@ ALTER TABLE `tbl_slider`
 --
 ALTER TABLE `tbl_social`
   ADD PRIMARY KEY (`social_id`);
+
+--
+-- Indexes for table `tbl_team`
+--
+ALTER TABLE `tbl_team`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_team_member`
@@ -945,6 +1051,12 @@ ALTER TABLE `tbl_why_choose_photo`
 --
 
 --
+-- AUTO_INCREMENT for table `tbl_client`
+--
+ALTER TABLE `tbl_client`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tbl_comment`
 --
 ALTER TABLE `tbl_comment`
@@ -955,6 +1067,12 @@ ALTER TABLE `tbl_comment`
 --
 ALTER TABLE `tbl_designation`
   MODIFY `designation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tbl_employee`
+--
+ALTER TABLE `tbl_employee`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_faq`
@@ -1029,6 +1147,12 @@ ALTER TABLE `tbl_portfolio_photo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT for table `tbl_role`
+--
+ALTER TABLE `tbl_role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `tbl_service`
 --
 ALTER TABLE `tbl_service`
@@ -1051,6 +1175,12 @@ ALTER TABLE `tbl_slider`
 --
 ALTER TABLE `tbl_social`
   MODIFY `social_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `tbl_team`
+--
+ALTER TABLE `tbl_team`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_team_member`
