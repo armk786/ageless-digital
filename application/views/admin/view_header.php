@@ -28,8 +28,13 @@
     <!-- App js -->
     <script src="<?=base_url()?>assets/js/plugin.js"></script>
     <style>
-        .text-red{color:#ED1B30!important;}
-    </style>    
+            .text-red{color:#ED1B30!important;}
+            .apexcharts-legend-text{color: #74788d !important; font-size: .7rem !important;}
+            .card{ height: 100%; }
+           .table-responsive{     height: calc(100% - 50px);}
+         
+          .table-responsive table{height: 100%;}
+        </style>        
 </head>
 
 <body data-sidebar="dark">
@@ -216,7 +221,7 @@
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li>
-                    <a href="" class="waves-effect activeclass py-3">
+                    <a href="<?=base_url()?>admin/dashboard" class="waves-effect activeclass py-3">
                         <img src="<?=base_url()?>assets/images/icon1.png" alt="">
                         <span key="t-chat">Dashboard</span>
                     </a>
@@ -272,7 +277,7 @@
                 </li>
 
                 <li>
-                    <a href="" class="waves-effect py-3">
+                    <a href="<?=base_url()?>admin/client" class="waves-effect py-3">
                         <img src="<?=base_url()?>assets/images/icon9.png" alt="">
                         <span key="t-file-manager">Clients & Sites</span>
                     </a>
@@ -316,6 +321,7 @@
 <!-- Start right Content here -->
 <!-- ============================================================== -->
 <div class="main-content">
+    <div class="page-content">
 
 
 
